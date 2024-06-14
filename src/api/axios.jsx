@@ -20,6 +20,11 @@ const apiService = {
     return response.data;
   },
 
+  logout: async () => {
+    const response = await axios.post(`${API_BASE_URL}/logout`);
+    return response.data;
+  },
+  
   getMemos: async () => {
     const response = await axios.get(`${API_BASE_URL}/memos`);
     return response.data;

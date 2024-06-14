@@ -24,6 +24,20 @@ const MemoListForm = () => {
     fetchMemos();
   }, []);
 
+  const handleLogout = async () => {
+    try {
+      await apiService.logout();
+      navigate('/login');
+    } catch (error) {
+      console.error('Logout error:', error);
+      alert('로그아웃에 실패하였습니다.');
+    }
+  };
+
+  const handleUpdateMemo = (id) => {
+    navigate(`/memos/edit/${id}`);
+  };
+
   if (loading) {
     return <p>로딩중...</p>;
   }
@@ -32,13 +46,12 @@ const MemoListForm = () => {
     return <p>{error}</p>;
   }
 
-  const handleUpdateMemo = (id) => {
-    navigate(`/memos/edit/${id}`);
-  };
-
   return (
     <MemoListContainer>
-      <h1>메모 목록</h1>
+      <Header>
+        <h1>메모 목록</h1>
+        <LogoutButton onClick={handleLogout}>로그아웃</LogoutButton>
+      </Header>
       <MemoList>
         {memos.map((memo) => (
           <MemoItem key={memo.id} onClick={() => handleUpdateMemo(memo.id)}>
@@ -58,6 +71,12 @@ const MemoListContainer = styled.div`
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
+`;
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const MemoList = styled.ul`
@@ -83,4 +102,18 @@ const MemoImage = styled.img`
   height: auto;
   margin-top: 10px;
   border-radius: 8px;
+`;
+
+const LogoutButton = styled.button`
+  background-color: #d9534f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #c9302c;
+  }
 `;
