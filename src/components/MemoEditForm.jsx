@@ -50,14 +50,11 @@ const MemoEditForm = () => {
   };
 
   const handleDelete = async () => {
-    const confirmDelete = window.confirm("메모를 삭제하시겠습니까?");
-    if (confirmDelete) {
-      try {
-        await apiService.deleteMemo(id);
-        navigate('/memos');
-      } catch (error) {
-        setError('Failed to delete memo');
-      }
+    try {
+      await apiService.deleteMemo(id);
+      navigate('/memos');
+    } catch (error) {
+      setError('Failed to delete memo');
     }
   };
 

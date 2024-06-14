@@ -47,10 +47,7 @@ const SignupForm = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       
-      <ButtonContainer>
-        <StyledButton type="submit">회원가입</StyledButton>
-        <LoginButton type="button" onClick={() => navigate("/login")}>로그인</LoginButton>
-      </ButtonContainer>
+      <StyledButton type="submit">회원가입</StyledButton>
     </StyledForm>
   );
 };
@@ -69,14 +66,8 @@ const StyledForm = styled.form`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 20px;
-`;
-
 const StyledButton = styled.button`
+  margin-top: 20px;
   padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
@@ -84,25 +75,8 @@ const StyledButton = styled.button`
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  flex: 1;
-  margin-right: 10px;
   
   &:hover {
     background-color: #0056b3;
-  }
-`;
-
-const LoginButton = styled.button`
-  padding: 10px 20px;
-  background-color: #6c757d;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  flex: 1;
-  
-  &:hover {
-    background-color: #5a6268;
   }
 `;
