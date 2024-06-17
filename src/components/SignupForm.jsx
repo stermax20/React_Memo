@@ -28,6 +28,7 @@ const SignupForm = () => {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
+          <h1>회원가입</h1>
       <FormInput
         label="이름"
         type="text"

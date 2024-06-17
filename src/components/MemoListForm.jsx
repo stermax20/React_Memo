@@ -20,7 +20,6 @@ const MemoListForm = () => {
         setLoading(false);
       }
     };
-
     fetchMemos();
   }, []);
 
@@ -32,6 +31,10 @@ const MemoListForm = () => {
       console.error('Logout error:', error);
       alert('로그아웃에 실패하였습니다.');
     }
+  };
+
+  const handleCreateMemo = () => {
+    navigate('/memos/add');
   };
 
   const handleUpdateMemo = (id) => {
@@ -50,7 +53,10 @@ const MemoListForm = () => {
     <MemoListContainer>
       <Header>
         <h1>메모 목록</h1>
-        <LogoutButton onClick={handleLogout}>로그아웃</LogoutButton>
+        <ButtonContainer>
+          <CreateMemoButton onClick={handleCreateMemo}>메모 생성</CreateMemoButton>
+          <LogoutButton onClick={handleLogout}>로그아웃</LogoutButton>
+        </ButtonContainer>
       </Header>
       <MemoList>
         {memos.map((memo) => (
@@ -75,8 +81,15 @@ const MemoListContainer = styled.div`
 
 const Header = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 380px;
 `;
 
 const MemoList = styled.ul`
@@ -115,5 +128,19 @@ const LogoutButton = styled.button`
 
   &:hover {
     background-color: #c9302c;
+  }
+`;
+
+const CreateMemoButton = styled.button`
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #1e7e34;
   }
 `;

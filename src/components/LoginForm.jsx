@@ -30,6 +30,7 @@ const LoginForm = () => {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
+      <h1>로그인</h1>
       <FormInput
         label="이메일"
         type="email"
